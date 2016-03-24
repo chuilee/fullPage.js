@@ -36,7 +36,8 @@ gulp.task('js', function() {
         }))
         .pipe(rename({suffix: '.min'}))
         .pipe(sourcemaps.write('.'))
-        .pipe(gulp.dest('./dist'));
+        .pipe(gulp.dest('./dist'))
+        .pipe(gulp.dest('./'));
 });
 
 gulp.task('default', ['css', 'js']);
