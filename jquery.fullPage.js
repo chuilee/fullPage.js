@@ -167,6 +167,16 @@
         //TO BE REMOVED in future versions. Maintained temporaly for backwards compatibility.
         $.extend($.easing,{ easeInQuart: function (x, t, b, c, d) { return c*(t/=d)*t*t*t + b; }});
 
+        //IE < 10 pollify for requestAnimationFrame
+        window.requestAnimFrame = function(){
+            return window.requestAnimationFrame ||
+                window.webkitRequestAnimationFrame ||
+                window.mozRequestAnimationFrame ||
+                window.oRequestAnimationFrame ||
+                window.msRequestAnimationFrame ||
+                function(callback){ callback() }
+        }();
+
         /**
         * Sets the autoScroll option.
         * It changes the scroll bar visibility and the history of the site as a result.
@@ -525,9 +535,16 @@
             //setting the class for the body element
             setBodyClass();
 
-            $window.on('load', function() {
+            // $window.on('load', function() {
+            //     scrollToAnchor();
+            // });
+            if (document.readyState != "complete") {
+                $window.on('load', function(){
+                    scrollToAnchor();
+                });
+            } else {
                 scrollToAnchor();
-            });
+            }
         }
 
         /**
@@ -1157,16 +1174,6 @@
                 silentLandscapeScroll($(this), 'internal');
             });
         }
-
-        //IE < 10 pollify for requestAnimationFrame
-        window.requestAnimFrame = function(){
-            return window.requestAnimationFrame ||
-                window.webkitRequestAnimationFrame ||
-                window.mozRequestAnimationFrame ||
-                window.oRequestAnimationFrame ||
-                window.msRequestAnimationFrame ||
-                function(callback){ callback() }
-        }();
 
         /**
         * Scrolls the site to the given element and scrolls to the slide if a callback is given.
