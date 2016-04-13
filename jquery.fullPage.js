@@ -172,7 +172,6 @@
         //easeInOutCubic animation included in the plugin
         $.extend($.easing,{ easeInOutCubic: function (x, t, b, c, d) {if ((t/=d/2) < 1) return c/2*t*t*t + b;return c/2*((t-=2)*t*t + 2) + b;}});
 
-<<<<<<< HEAD
         //TO BE REMOVED in future versions. Maintained temporaly for backwards compatibility.
         $.extend($.easing,{ easeInQuart: function (x, t, b, c, d) { return c*(t/=d)*t*t*t + b; }});
 
@@ -186,8 +185,6 @@
                 function(callback){ callback() }
         }();
 
-=======
->>>>>>> 777389eab848132f88be2071cac780284d3ffd43
         /**
         * Sets the autoScroll option.
         * It changes the scroll bar visibility and the history of the site as a result.
@@ -1272,8 +1269,6 @@
             });
         }
 
-<<<<<<< HEAD
-=======
         var previousDestTop = 0;
         /**
         * Returns the destination Y position based on the scrolling direction and
@@ -1311,7 +1306,6 @@
             return position;
         }
 
->>>>>>> 777389eab848132f88be2071cac780284d3ffd43
         /**
         * Scrolls the site to the given element and scrolls to the slide if a callback is given.
         */
